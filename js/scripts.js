@@ -1,7 +1,7 @@
 const Clickbutton = document.querySelectorAll('.button')
 const tbody = document.querySelector('.tbody')
 let carrito = [] //guardo en una matriz la informacion del item para luego mostrarla 
-
+const procesarCompra = document.querySelector("#compra");
 Clickbutton.forEach(btn => {//Recorro la matriz de la const Clikbutton
   btn.addEventListener('click', addToCarritoItem)//añado un evento clik referida a mi matriz
 }) 
@@ -126,6 +126,40 @@ function sumaCantidad(e){
   })
 }
 
+
+
+//   procesarCompra.addEventListener('click',() => {
+//     if((carrito.length === 0) {
+//       alert("Ingrese un producto para continuar la compra")
+//     }
+//   }) else {
+//       location.href = "compra.html";
+//  };
+
+ procesarCompra.addEventListener("click", () => {
+  if (carrito.length === 0) {
+    Swal.fire({
+      title: "¡Tu carrito está vacio!",
+      text: "Compra algo para continuar con la compra",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    });
+  } else {
+    location.href = "compra.html";
+  }
+});
+
+
+
+  
+ 
+ 
+
+ 
+ 
+ 
+
+
 function addLocalStorage(){
   localStorage.setItem('carrito', JSON.stringify(carrito))
 }
@@ -136,4 +170,4 @@ window.onload = function(){
     carrito = storage;
     renderCarrito()
   }
-}
+} 
